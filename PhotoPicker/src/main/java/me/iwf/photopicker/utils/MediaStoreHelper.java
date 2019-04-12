@@ -57,7 +57,7 @@ public class MediaStoreHelper {
 
       data.moveToFirst();
 
-      while (data.moveToNext()) {
+      do {
 
         int imageId  = data.getInt(data.getColumnIndexOrThrow(_ID));
         String bucketId = data.getString(data.getColumnIndexOrThrow(BUCKET_ID));
@@ -81,7 +81,7 @@ public class MediaStoreHelper {
         }
 
         photoDirectoryAll.addPhoto(imageId, path);
-      }
+      }while (data.moveToNext());
       if (photoDirectoryAll.getPhotoPaths().size() > 0) {
         photoDirectoryAll.setCoverPath(photoDirectoryAll.getPhotoPaths().get(0));
       }
